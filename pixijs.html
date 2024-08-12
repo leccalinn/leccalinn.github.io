@@ -6,13 +6,17 @@
 		await app.init({ background: "#1099bb", resizeTo: window });
 		document.body.appendChild(app.canvas);
 		
-		const texture = await Assets.load("assets/rat1.png");
-		const texture2 = await Assets.load("assets/rat2.png");
+		const texture = await Assets.load("rat1.png");
+		const texture2 = await Assets.load("rat2.png");
 		const rat = new Sprite(texture, texture2);
 		app.stage.addChild(rat);
 		rat.anchor.set(0.5)
 		rat.x = app.screen.width / 2
 		rat.y = app.screen.height / 2
+
+		app.ticker.add((time) => {
+			rat.rotation += 0.1 * deltaTime;
+		});
 		</script>
 </head>
 </html>
